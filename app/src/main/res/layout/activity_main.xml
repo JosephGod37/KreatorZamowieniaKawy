@@ -61,11 +61,15 @@
         android:src="@drawable/capuccino"
         />
     </LinearLayout>
-    <View
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="wrap_content"
+        android:text="Dodatki"
+        android:textAlignment="center"
+        android:textSize="20dp"
         android:background="#BC6712"
-        ></View>
+        android:textColor="@color/black"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,12 +90,15 @@
             android:layout_margin="10dp"
             />
     </LinearLayout>
-    <View
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="wrap_content"
+        android:text="Ilosc kaw"
+        android:textAlignment="center"
+        android:textSize="20dp"
         android:background="#BC6712"
-        ></View>
-
+        android:textColor="@color/black"
+        />
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="200dp"
