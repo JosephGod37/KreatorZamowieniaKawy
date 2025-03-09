@@ -1,6 +1,9 @@
 package com.example.kreatorzamowieniakawy
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
@@ -23,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         val seekBar = findViewById<SeekBar>(R.id.seekBar)
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                //Ta metoda wywoływana jest za każdym razem, gdy zmienia się wartość postępu
-                //fromUser - informacja czy zmiana wywołana przez użytkownika, czy programistycznie
                 myTextView.text = "Ilosc: $progress"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -36,5 +37,32 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "Zakończyłeś przesuwanie suwaka", Toast.LENGTH_SHORT).show()
             }
         })
+
+        val myImageView: ImageView = findViewById(R.id.my_ImageView)
+
+        val images = listOf(
+            R.drawable.capuccino,
+            R.drawable.espresso,
+            R.drawable.latte
+        )
+
+        val radioGroup = findViewById<RadioGroup>(R.id.kawa_radiogroup)
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.espresso_radiobutton -> {
+                    myImageView.setImageResource(images[1])
+                }
+
+                R.id.cappuccino_radiobutton -> {
+                    myImageView.setImageResource(images[0])
+                }
+
+                R.id.latte_radiobutton -> {
+                    myImageView.setImageResource(images[2])
+                }
+            }
+        }
+
+
     }
 }
