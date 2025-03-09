@@ -135,7 +135,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="70dp"
         android:text="Zloz zamowienie"
-        android:onClick="myButtonClick"
         android:layout_gravity="center"
         android:backgroundTint="#BC6712"/>
 </LinearLayout>

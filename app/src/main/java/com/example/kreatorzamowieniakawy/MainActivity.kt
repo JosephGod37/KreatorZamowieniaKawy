@@ -1,6 +1,8 @@
 package com.example.kreatorzamowieniakawy
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val myTextView = findViewById<TextView>(R.id.myTextView)
         val seekBar = findViewById<SeekBar>(R.id.seekBar)
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -47,22 +50,45 @@ class MainActivity : AppCompatActivity() {
         )
 
         val radioGroup = findViewById<RadioGroup>(R.id.kawa_radiogroup)
+        var selectedCoffee = ""
+
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.espresso_radiobutton -> {
                     myImageView.setImageResource(images[1])
+                    selectedCoffee = "Espresso"
                 }
 
                 R.id.cappuccino_radiobutton -> {
                     myImageView.setImageResource(images[0])
+                    selectedCoffee = "Cappuccino"
                 }
 
                 R.id.latte_radiobutton -> {
                     myImageView.setImageResource(images[2])
+                    selectedCoffee = "Latte"
                 }
             }
         }
 
+        val myCheckBox_mleko = findViewById<CheckBox>(R.id.mleko)
+        var milkSelected = "Nie zaznaczone"
+        var sugarSelected = "Nie zaznaczone"
 
+        myCheckBox_mleko.setOnCheckedChangeListener { _, isChecked ->
+            milkSelected = if (isChecked) "Mleko" else "Brak mleka"
+        }
+        val myCheckBox_cukier = findViewById<CheckBox>(R.id.cukier)
+        myCheckBox_cukier.setOnCheckedChangeListener { _, isChecked ->
+            sugarSelected = if (isChecked) "Cukier" else "Brak cukru"
+        }
+
+        val submitButton = findViewById<Button>(R.id.myButton)
+
+        submitButton.setOnClickListener{
+            val seekBarValue=seekBar.progress
+            val message = "Wybrana kawa: $selectedCoffee\nMleko: $milkSelected\nCukier: $sugarSelected\nIlosc: $seekBarValue"
+            Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
+        }
     }
 }
