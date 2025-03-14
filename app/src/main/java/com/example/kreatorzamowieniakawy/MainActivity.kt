@@ -1,6 +1,7 @@
 package com.example.kreatorzamowieniakawy
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
@@ -32,12 +33,8 @@ class MainActivity : AppCompatActivity() {
                 myTextView.text = "Ilosc: $progress"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                // Ta metoda wywoływana jest w momencie, gdy użytkownik dotknie i zacznie przesuwać suwak
-                Toast.makeText(this@MainActivity, "Zacząłeś przesuwać suwak", Toast.LENGTH_SHORT).show()
             }
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                //Ta metoda wywoływana jest w momencie, gdy użytkownik przestanie przesuwać suwak i puści go
-                Toast.makeText(this@MainActivity, "Zakończyłeś przesuwanie suwaka", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -88,7 +85,8 @@ class MainActivity : AppCompatActivity() {
         submitButton.setOnClickListener{
             val seekBarValue=seekBar.progress
             val message = "Wybrana kawa: $selectedCoffee\nMleko: $milkSelected\nCukier: $sugarSelected\nIlosc: $seekBarValue"
-            Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MainActivity, "Pobrano dane", Toast.LENGTH_LONG).show()
+            Log.d("kawa",message)
         }
     }
 }
